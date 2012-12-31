@@ -7,7 +7,7 @@ public class Ship {
 	private int ySpeed = 2;
 	private int yDir = 1;
 	private int xDir = 1;
-	private  Color colour = new Color(0,255,255);
+	private  Color color = new Color(0,255,255);
 	
 	
 
