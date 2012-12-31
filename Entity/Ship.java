@@ -1,3 +1,5 @@
+package Entity;
+import java.awt.*;
 
 public class Ship {
 	private int xPos, yPos, width, height;
@@ -5,6 +7,12 @@ public class Ship {
 	private int ySpeed = 2;
 	private int yDir = 1;
 	private int xDir = 1;
+	private  Color colour = new Color(0,255,255);
+	
+	
+
+	
+
 	
 	public Ship(int xPos, int yPos, int width, int height)
 	{
@@ -18,5 +26,10 @@ public class Ship {
 	{
 		xPos = xPos + (xSpeed * xDir);
 		yPos = yPos + (ySpeed * yDir);
+	}
+	
+	public void draw()
+	{
+		
 	}
 }
