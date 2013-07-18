@@ -7,9 +7,7 @@ import javax.swing.ImageIcon;
 
 public class Alien {
 
-    private String craft = "star.png";
-
-    private int x;
+	private int x;
     private int y;
     private int width;
     private int height;
@@ -19,7 +17,7 @@ public class Alien {
 
     public Alien(int x, int y, Dimension space) 
     {
-        ImageIcon ii = new ImageIcon(this.getClass().getResource(craft));
+        ImageIcon ii = new ImageIcon(this.getClass().getResource("gegner.gif"));
         image = ii.getImage().getScaledInstance(50, 50, 0);
         width = 50;
         height = 50;

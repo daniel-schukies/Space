@@ -22,8 +22,8 @@ public class Missile {
     public Missile(int x, int y, int[] dir, Dimension space) 
     {
 
-        ImageIcon ii = new ImageIcon(this.getClass().getResource("star.png"));
-        image = ii.getImage().getScaledInstance(25, 25, 0);
+        ImageIcon ii = new ImageIcon(this.getClass().getResource("cat.png"));
+        image = ii.getImage().getScaledInstance(120, 120, 0);
         visible = true;
         width = 25;
         height = 25;

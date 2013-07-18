@@ -15,7 +15,6 @@ import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -29,13 +28,14 @@ public class Space extends JPanel implements ActionListener, MouseMotionListener
     private int B_WIDTH;
     private int B_HEIGHT;
     private int[] mousePosition;
+    
 
     public Space() 
     {
     	this.mousePosition = new int[2];
         addKeyListener(new TAdapter());
         setFocusable(true);
-        setBackground(Color.BLACK);
+        setBackground(new Color(33,33,24));
         setDoubleBuffered(true);
         ingame = true;
         
@@ -61,7 +61,7 @@ public class Space extends JPanel implements ActionListener, MouseMotionListener
     @SuppressWarnings("unchecked")
 	public void initAliens() 
     {
-        aliens = new ArrayList();
+        aliens = new ArrayList(); 
         
         Random r = new Random();
 
@@ -89,17 +89,19 @@ public class Space extends JPanel implements ActionListener, MouseMotionListener
 
             ArrayList ms = craft.getMissiles();
 
-            for (int i = 0; i < ms.size(); i++) 
-            {
-                Missile m = (Missile)ms.get(i);
-                g2d.drawImage(m.getImage(), (int)Math.round(m.getX()), (int)Math.round(m.getY()), this);
-            }
+
 
             for (int i = 0; i < aliens.size(); i++) 
             {
                 Alien a = (Alien)aliens.get(i);
                 if (a.isVisible())
                     g2d.drawImage(a.getImage(), a.getX(), a.getY(), this);
+            }
+            
+            for (int i = 0; i < ms.size(); i++) 
+            {
+                Missile m = (Missile)ms.get(i);
+                g2d.drawImage(m.getImage(), (int)Math.round(m.getX()), (int)Math.round(m.getY()), this);
             }
 
             g2d.setColor(Color.WHITE);
