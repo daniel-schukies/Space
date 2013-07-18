@@ -42,7 +42,7 @@ public class Missile {
         this.dir[0] = (this.dir[0] / Math.sqrt( (this.dir[0]*this.dir[0]) + (this.dir[1]*this.dir[1])-2 )) ;
         this.dir[1] = (this.dir[1] / Math.sqrt( (this.dir[1]*this.dir[1]) + (this.dir[0]*this.dir[0])-2 )) ;
         */
-        System.out.println("x: " + this.dir[0] + "Y: " + this.dir[1]);
+        //System.out.println("x: " + this.dir[0] + "Y: " + this.dir[1]);
         
         this.startPosition[0] = x;
         this.startPosition[1] = y;

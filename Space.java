@@ -215,8 +215,10 @@ public class Space extends JPanel implements ActionListener, MouseMotionListener
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		//System.out.println("X: " + e.getXOnScreen());
-		
+		this.craft.fire();
+		System.out.println("X: " + e.getXOnScreen());
+		this.mousePosition[0] = e.getXOnScreen();
+		this.mousePosition[1] = e.getYOnScreen();
 	}
 
 	@Override
