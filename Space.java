@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 
-public class Space extends JPanel implements ActionListener, MouseMotionListener {
+public class Space extends JPanel implements ActionListener, MouseMotionListener, MouseListener {
 
     private Timer timer;
     private Craft craft;
@@ -38,6 +39,8 @@ public class Space extends JPanel implements ActionListener, MouseMotionListener
         setBackground(new Color(33,33,24));
         setDoubleBuffered(true);
         ingame = true;
+        
+        this.addMouseListener(this);
         
         this.addMouseMotionListener(this);
 
@@ -228,5 +231,35 @@ public class Space extends JPanel implements ActionListener, MouseMotionListener
 		this.mousePosition[1] = e.getYOnScreen();
 		
 
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		this.craft.fire();
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }
