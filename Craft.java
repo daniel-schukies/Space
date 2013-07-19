@@ -6,6 +6,8 @@ import java.awt.Point;
 import java.awt.PointerInfo;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -16,7 +18,7 @@ import javax.swing.ImageIcon;
 
 
 
-public class Craft 
+public class Craft
 {
 
     private String craft = "star.png";
@@ -174,22 +176,22 @@ public class Craft
             fire();
         }
 
-        if (key == KeyEvent.VK_LEFT) 
+        if (key == KeyEvent.VK_A) 
         {
             dx = -1;
         }
 
-        if (key == KeyEvent.VK_RIGHT)
+        if (key == KeyEvent.VK_D)
         {
             dx = 1;
         }
 
-        if (key == KeyEvent.VK_UP) 
+        if (key == KeyEvent.VK_W) 
         {
             dy = -1;
         }
 
-        if (key == KeyEvent.VK_DOWN) 
+        if (key == KeyEvent.VK_S) 
         {
             dy = 1;
         }
@@ -231,24 +233,28 @@ public class Craft
     {
         int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_LEFT) 
+        if (key == KeyEvent.VK_A) 
         {
             dx = 0;
         }
 
-        if (key == KeyEvent.VK_RIGHT) 
+        if (key == KeyEvent.VK_D) 
         {
             dx = 0;
         }
 
-        if (key == KeyEvent.VK_UP) 
+        if (key == KeyEvent.VK_W) 
         {
             dy = 0;
         }
 
-        if (key == KeyEvent.VK_DOWN) 
+        if (key == KeyEvent.VK_S) 
         {
             dy = 0;
         }
     }
+
+
+
+
 }
