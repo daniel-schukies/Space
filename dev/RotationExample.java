@@ -1,3 +1,4 @@
+package dev;
 //Some imports
 import java.awt.Canvas;
 import java.awt.Color;
