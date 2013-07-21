@@ -21,7 +21,8 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import ships.Alien;
-import ships.Craft;
+import ships.Ship;
+import ships.Prometheus;
 
 import weapons.Missile;
 
@@ -29,7 +30,7 @@ import weapons.Missile;
 public class Space extends JPanel implements ActionListener, MouseMotionListener, MouseListener {
 
     private Timer timer;
-    private Craft craft;
+    private Prometheus prometheus;
     private ArrayList aliens;
     private boolean ingame;
     private int B_WIDTH;
@@ -52,7 +53,8 @@ public class Space extends JPanel implements ActionListener, MouseMotionListener
 
         setSize(1200, 800);
 
-        craft = new Craft(this.getSize(), this.mousePosition);
+        //FIXME: Dynamic creation
+        prometheus = new Prometheus(this.getSize(), this.mousePosition, 0, 0);
 
         initAliens();
 
@@ -76,7 +78,7 @@ public class Space extends JPanel implements ActionListener, MouseMotionListener
 
         for (int i=0; i< 10; i++ ) 
         {
-            aliens.add(new Alien( r.nextInt(this.getWidth()), r.nextInt(this.getHeight()), this.getSize() ) );
+           //aliens.add(new Alien( r.nextInt(this.getWidth()), r.nextInt(this.getHeight()), this.getSize() ) );
            
         }
         
@@ -93,17 +95,17 @@ public class Space extends JPanel implements ActionListener, MouseMotionListener
 
             Graphics2D g2d = (Graphics2D)g;
 
-            if (craft.isVisible())
-                g2d.drawImage(craft.getImage(), craft.getX(), craft.getY(),this);
+            if (prometheus.getIsVisible())
+                g2d.drawImage(prometheus.getImage(), prometheus.getX(), prometheus.getY(),this);
 
-            ArrayList ms = craft.getMissiles();
+            ArrayList ms = prometheus.getMissiles();
 
 
 
             for (int i = 0; i < aliens.size(); i++) 
             {
                 Alien a = (Alien)aliens.get(i);
-                if (a.isVisible())
+                if (a.getIsVisible())
                     g2d.drawImage(a.getImage(), a.getX(), a.getY(), this);
             }
             
@@ -142,7 +144,7 @@ public class Space extends JPanel implements ActionListener, MouseMotionListener
             ingame = false;
         }
 
-        ArrayList ms = craft.getMissiles();
+        ArrayList ms = prometheus.getMissiles();
 
         for (int i = 0; i < ms.size(); i++) 
         {
@@ -155,12 +157,12 @@ public class Space extends JPanel implements ActionListener, MouseMotionListener
         for (int i = 0; i < aliens.size(); i++) 
         {
             Alien a = (Alien) aliens.get(i);
-            if (a.isVisible()) 
+            if (a.getIsVisible()) 
                 a.move();
             else aliens.remove(i);
         }
 
-        craft.move();
+        prometheus.move();
         checkCollisions();
         repaint();  
     }
@@ -169,7 +171,7 @@ public class Space extends JPanel implements ActionListener, MouseMotionListener
 	public void checkCollisions() 
     {
 
-        Rectangle r3 = craft.getBounds();
+        Rectangle r3 = prometheus.getBounds();
 
         /*for (int j = 0; j<aliens.size(); j++) 
         {
@@ -189,7 +191,7 @@ public class Space extends JPanel implements ActionListener, MouseMotionListener
             }
         }*/
 
-        ArrayList ms = craft.getMissiles();
+        ArrayList ms = prometheus.getMissiles();
 
         for (int i = 0; i < ms.size(); i++) 
         {
@@ -218,18 +220,18 @@ public class Space extends JPanel implements ActionListener, MouseMotionListener
     private class TAdapter extends KeyAdapter {
 
         public void keyReleased(KeyEvent e) {
-            craft.keyReleased(e);
+            prometheus.keyReleased(e);
         }
 
         public void keyPressed(KeyEvent e) {
-            craft.keyPressed(e);
+            prometheus.keyPressed(e);
         }
     }
 
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		this.craft.fire();
+		this.prometheus.fire();
 		System.out.println("X: " + e.getXOnScreen());
 		this.mousePosition[0] = e.getXOnScreen();
 		this.mousePosition[1] = e.getYOnScreen();
@@ -246,7 +248,7 @@ public class Space extends JPanel implements ActionListener, MouseMotionListener
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		this.craft.fire();
+		this.prometheus.fire();
 		
 	}
 
